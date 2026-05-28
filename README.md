@@ -10,4 +10,4 @@ GitHub Pages 게시용 정적 웹입니다.
 - data 폴더
 - .nojekyll
 
-VWorld 배경지도는 화면 왼쪽의 API 키 입력칸에 키를 넣고 `적용`을 누르면 켜집니다. GitHub 공개 저장소에는 API 키를 파일로 저장하지 마세요.
+VWorld 배경지도는 화면 왼쪽의 API 키 입력칸에 키를 넣고 `적용`을 누르면 켜집니다. GitHub 공개 저장소에는 API 키를 저장못하기 때문입니다.
