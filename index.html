@@ -1,0 +1,65 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>송파구 데이터 뷰어</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <aside class="left-panel panel">
+      <div class="panel-head">
+        <div>
+          <h1>송파구 데이터 뷰어</h1>
+          <p id="datasetSummary">필지 데이터를 불러오는 중</p>
+        </div>
+        <button id="fitBounds" class="icon-btn" title="전체 보기" aria-label="전체 보기">⌖</button>
+      </div>
+
+      <section class="block compact">
+        <label class="check"><input id="toggleParcels" type="checkbox" checked /> 필지별 토지이용</label>
+        <label class="check"><input id="toggleDong" type="checkbox" checked /> 법정동 경계</label>
+        <label class="check"><input id="toggleSgis" type="checkbox" /> 집계구 경계</label>
+        <label class="check"><input id="toggleBuildings" type="checkbox" /> 건물</label>
+      </section>
+
+      <section class="block">
+        <div class="block-title">분류 투명도</div>
+        <div class="range-row"><span>낮음</span><input id="opacityRange" type="range" min="25" max="90" value="72" /><span id="opacityValue">72%</span></div>
+      </section>
+
+      <section class="block">
+        <div class="block-title">배경지도</div>
+        <div class="key-row"><input id="vworldKey" type="password" autocomplete="off" placeholder="VWorld API 키" /><button id="applyKey">적용</button></div>
+        <div class="segmented"><button class="base-btn active" data-base="osm">OSM</button><button class="base-btn" data-base="vworld">VWorld</button><button class="base-btn" data-base="satellite">위성</button></div>
+      </section>
+
+      <section class="block grow">
+        <div class="block-title">토지이용 분류</div>
+        <div id="legend" class="legend"></div>
+      </section>
+    </aside>
+
+    <aside class="right-panel panel">
+      <div class="panel-head stat-head">
+        <div>
+          <h2>송파구 통계</h2>
+          <p>토지이용 분류별 필지/면적</p>
+        </div>
+      </div>
+      <div class="tabs"><button class="active">전체</button><button>법정동</button><button>면적</button></div>
+      <div class="chart-wrap"><div id="donut" class="donut"><span id="donutCenter">0%</span></div></div>
+      <div class="summary-grid"><div><strong id="totalParcels">-</strong><span>필지</span></div><div><strong id="totalArea">-</strong><span>면적</span></div></div>
+      <div class="stat-table-head"><span>분류</span><span>필지</span><span>면적</span><span>비율</span></div>
+      <div id="statsList" class="stats-list"></div>
+    </aside>
+
+    <div id="loading" class="loading">지도 데이터를 불러오는 중...</div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
